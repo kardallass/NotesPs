@@ -1,0 +1,27 @@
+<ion-grid>
+	<ion-row justify-content-center>
+		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+
+<ion-img src="../../../assets/imgs/logo.png"></ion-img>
+      <div text-center>
+				<h4>Espace Stagiaire - Inscription</h4>
+			</div>
+			<div padding>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="user.name" placeholder="CEF / Num inscrip."></ion-input>
+				</ion-item>
+        <ion-item>
+					<ion-input type="text" [(ngModel)]="user.code" placeholder="Code d'accès"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-input type="password" [(ngModel)]="user.pw" placeholder="Taper un mot de passe"></ion-input>
+				</ion-item>
+			</div>
+
+			<div padding>
+        <ion-button (click)="RegisterUser()" expand="block">Valider</ion-button>
+        <ion-button expand="block" color="secondary" href="/login" routerDirection="forward">Se Connecter</ion-button>
+			</div>
+		</ion-col>
+	</ion-row>
+</ion-grid>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Mes Notes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+<ion-item color="medium" no-lines>
+      <ion-title no-lines>
+        Liste des Notes disponibles saisies
+      </ion-title>
+</ion-item>
+
+          <ion-item-group *ngFor="let item of information; let i = index"  no-lines no-padding>
+    <!-- other menu items will go here -->
+            <ion-item (click)="menuItemHandler(i)" [ngClass]="{'section-active': item.open, 'section': !item.open}">{{ item.module }}
+              <ion-icon name="arrow-forward" *ngIf="!item.open"  slot="start"></ion-icon>
+              <ion-icon name="arrow-down" item-right *ngIf="item.open"  slot="start"></ion-icon>
+              <ion-badge slot="end" color="danger">{{ item.note }} / 20</ion-badge>
+            </ion-item>
+            <ion-item class="padding" *ngIf="item.open" padding-left>Contrôle Continu 01
+              <ion-icon name="" item-right *ngIf="item.open"  slot="start"></ion-icon>
+              <ion-badge slot="end" color="primary">{{ item.cc1 }} / 20</ion-badge>
+            </ion-item>
+            <ion-item  class="padding" *ngIf="item.open" padding-left>Contrôle Continu 02
+              <ion-icon name="" item-right *ngIf="item.open"  slot="start"></ion-icon>
+                <ion-badge slot="end" color="primary">{{ item.cc2 }} / 20</ion-badge>
+            </ion-item>
+            <ion-item  class="padding" *ngIf="item.open" padding-left>Examen de Fin de Module
+              <ion-icon name="" item-right *ngIf="item.open"  slot="start"></ion-icon>
+            <ion-badge slot="end" color="primary">{{ item.efm }} / 40</ion-badge>
+          </ion-item>
+
+          </ion-item-group>
+    <!-- other menu items will go here -->
+
+
+
+
+
+
+</ion-content>
