@@ -14,6 +14,9 @@ export class AproposPage implements OnInit {
     if(!this.AuthService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
-  
 
+
+}
+ngOnInit() {
+}
 }

@@ -63,7 +63,7 @@ currentUser: User;
        this.http.post(apiUrl+'retrieve-data.php', datasend, {headers: headers})
   .subscribe(data => {
 
-data = JSON.parse(data._body);
+data = JSON.parse(data["_body"]);
 this.loadingCtrl.dismiss();
 
   if (data[0]['resultat'] === 'success') {
@@ -99,7 +99,7 @@ this.loadingCtrl.dismiss();
        this.http.post(apiUrl+'inscription.php', datasend, {headers: headers})
   .subscribe(data => {
 
-data = JSON.parse(data._body);
+data = JSON.parse(data["_body"]);
 this.loadingCtrl.dismiss();
   if (data[0]['resultat'] === 'success') {
     this.currentUser = {

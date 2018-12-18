@@ -3,6 +3,7 @@ import { AuthService } from './../service/auth.service';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {LoadingController} from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 let apiUrl = 'https://www.drps-ofppt.ma/notes/mobile/get-note.php';
 let  showSubmenu: boolean = false;
 
@@ -16,10 +17,10 @@ export class ListPage implements OnInit {
   languageShow: boolean = true;
   languageHide: boolean = false;
   private selectedItem: any;
-  information: any[];
+  information: any;
 public items: Array<{ title: string; note: string}> = [];
 
-  constructor(private AuthService: AuthService, public loadingCtrl: LoadingController, private router: Router, private http: Http) { }
+  constructor(private AuthService: AuthService, public alertController: AlertController, public loadingCtrl: LoadingController, private router: Router, private http: Http) { }
 
   toggleSection(i) {
     this.information[i].open = !this.information[i].open;
@@ -28,6 +29,16 @@ public items: Array<{ title: string; note: string}> = [];
     this.information[i].open = !this.information[i].open;
 
     }
+    async serverAlert() {
+      const alert = await this.alertController.create({
+        header: 'Problème de Connexion',
+        subHeader: '',
+        message: 'Problème de connexion Internet où Pas de connexion avec le Serveur OFPPT. ',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+      }
   async presentLoadingDefault() {
     let loading = await this.loadingCtrl.create({
       spinner: 'circles',
@@ -54,10 +65,9 @@ public items: Array<{ title: string; note: string}> = [];
   .subscribe(data => {
 console.log(data);
 this.loadingCtrl.dismiss();
-data = JSON.parse(data._body);
+data = JSON.parse(data["_body"]);
 
-
-      this.information = data;
+    this.information = data;
 
 
   }, (err) => {

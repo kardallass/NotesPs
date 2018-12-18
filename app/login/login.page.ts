@@ -12,8 +12,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class LoginPage {
   user = {
-    name: '199101300039',
-    pw: 'admin'
+    name: '',
+    pw: ''
   };
 
   constructor(public alertController: AlertController, private router: Router, private AuthService: AuthService, public menuCtrl: MenuController) { }
